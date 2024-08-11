@@ -7,4 +7,9 @@ export const Input = styled.input`
     border: 1px solid black;
     border-radius: 10px;
     padding: 10px;
+
+    @media (min-width: 562px) {
+        padding: 0;
+        width: 100%;
+    }
 `

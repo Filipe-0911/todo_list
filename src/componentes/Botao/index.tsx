@@ -10,7 +10,7 @@ const BotaoEstilizado = styled.button`
     background-color: #61dafb;
     color: black;
     border: none;
-    padding: 20px 20px;
+    padding: 10px;
     border-radius: 5px;
     font-size: 18px;
     cursor: pointer;
