@@ -1,5 +1,7 @@
-import { useState, createContext } from "react";
+import { createContext } from "react";
 import { Tarefa } from "../types/Tarefa";
+import { useTarefa } from "../hooks/useTarefa";
+import { ADICIONAR_TAREFA, CONCLUIR_TAREFA } from "../hooks/useTarefa/reducer";
 
 interface TarefasProvidesValues {
     tarefas: Array<Tarefa>;
@@ -20,20 +22,19 @@ interface TarefasProvidesProps {
 
 
 export function TarefasProvider({ children }: TarefasProvidesProps): JSX.Element {
-    const [tarefas, setTarefas] = useState<Array<Tarefa>>([]);
+    const { dispatcher, tarefas } = useTarefa();
 
     function addTarefa(descricao: string) {
         if (descricao.length > 0) {
             const tarefa: Tarefa = { id: (tarefas.length), descricao: descricao, concluida: false };
-            setTarefas([...tarefas, tarefa])
+            dispatcher({ type: ADICIONAR_TAREFA, payload: { tarefa } });
         }
         return;
     }
 
     function concluirTarefa(id: number) {
-        setTarefas(tarefas.map(tarefa =>
-            tarefa.id === id ? { ...tarefa, concluida: true } : tarefa
-        ))
+        console.log(id)
+        dispatcher({ type: CONCLUIR_TAREFA, payload: { id }})
     }
 
     return (
