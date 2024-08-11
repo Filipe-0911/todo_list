@@ -7,7 +7,6 @@ export const MainEstilizada = styled.main`
     color: white;
     align-items: center;
     min-height: 100vh;
-    justify-content: center;
     font-size: 20px;
     gap: 1em;
 `
